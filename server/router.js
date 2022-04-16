@@ -8,6 +8,7 @@ const router = (app) => {
   app.post('/login', mid.requiresSecure, mid.requiresLogout, controllers.Account.login);
   app.post('/signup', mid.requiresSecure, mid.requiresLogout, controllers.Account.signup);
   app.get('/logout', mid.requiresLogin, controllers.Account.logout);
+  app.get('/premium', mid.requiresLogin, controllers.Anime.premiumMode);
   app.get('/maker', mid.requiresLogin, controllers.Anime.makerPage);
   app.post('/maker', mid.requiresLogin, controllers.Anime.makeAnime);
   app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);

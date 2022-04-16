@@ -32,8 +32,12 @@ const makeAnime = async (req, res) => {
     return res.status(400).json({ error: 'An error occurred.' });
   }
 };
+const premiumMode = async (req,res) => {
+  return res.status(201).json({ message: "Premium mode activated." });
+};
 module.exports = {
   makerPage,
   makeAnime,
   getAnimes,
+  premiumMode,
 };
