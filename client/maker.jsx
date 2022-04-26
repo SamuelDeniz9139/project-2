@@ -61,9 +61,9 @@ const AnimeList=(props)=>{
 const PremiumSwitch=(props)=>{
     return(
         <form id="premiumForm" onSubmit={handleAnime}
-        name="premiumForm" action="/change"
+        name="premiumForm" action="/premium"
         method="POST" className="premiumForm">
-            <input className="makeAnimeSubmit" type="submit" value="Activate Premium" />
+            <input className="formSubmit" type="submit" value="Activate Premium" />
         </form>
     );
 }

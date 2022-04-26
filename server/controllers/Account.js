@@ -25,7 +25,7 @@ const login = (req, res) => {//logs the user in
 const change = (req, res) => {//should change the password of the user; not done yet
   const username = `${req.body.username}`;
   const pass = `${req.body.pass}`;
-  if (!username || !pass) {//if one of the fields is emptty
+  if (!username || !pass) {//if one of the fields is empty
     return res.status(400).json({ error: 'Requires all fields.' });
   }
   return Account.authenticate(username, pass, (err, account) => {
@@ -40,7 +40,7 @@ const signup = async (req, res) => {//signs the user up
   const username = `${req.body.username}`;
   const pass = `${req.body.pass}`;
   const pass2 = `${req.body.pass2}`;
-  if (!username || !pass || !pass2) {//if one of the fields is emptty
+  if (!username || !pass || !pass2) {//if one of the fields is empty
     return res.status(400).json({ error: 'Requires all fields.' });
   }
   if (pass !== pass2) {//if the passwords don't match
