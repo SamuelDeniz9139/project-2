@@ -22,18 +22,22 @@ const login = (req, res) => {//logs the user in
     return res.json({ redirect: '/maker' });
   });
 };
-const premiumMode = async (req,res) => {//activates premium mode; not done yet
-  return res.json({ redirect: '/maker' });
-};
+const getAccounts = (req, res) => AnimeModel.findByOwner(req.session.account._id, (err, docs) => {
+  if (err) {
+    console.log(err);
+    return res.status(400).json({ error: 'An error occurred.' });
+  }
+  return res.json({ animes: docs });
+});
 const change = (req, res) => {//should change the password of the user; not done yet
   const username = `${req.body.username}`;
   const pass = `${req.body.pass}`;
-  if (!username || !pass) {//if one of the fields isn't added
+  if (!username || !pass) {//if one of the fields is emptty
     return res.status(400).json({ error: 'Requires all fields.' });
   }
   return Account.authenticate(username, pass, (err, account) => {
     if (err || !account) {//if there's an error
-      return res.status(401).json({ error: 'Wrong username or password.' });
+      return res.status(401).json({ error: 'Something went wrong.' });
     }
     req.session.account = Account.toAPI(account);
     return res.json({ redirect: '/' });
@@ -62,6 +66,9 @@ const signup = async (req, res) => {//signs the user up
     return res.status(400).json({ error: 'An error occurred.' });
   }
 };
+const premiumMode = async (req,res) => {//activates premium mode; not done yet
+  return res.json({ redirect: '/maker' });
+};
 const getToken = (req, res) => res.json({ csrfToken: req.csrfToken() });
 module.exports = {
   loginPage,
@@ -69,6 +76,7 @@ module.exports = {
   logout,
   change,
   signup,
+  getAccounts,
   premiumMode,
   getToken,
 };

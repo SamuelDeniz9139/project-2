@@ -55,11 +55,24 @@ const SignupWindow=(props)=>{
         </form>
     );
 };
+const ChangeWindow=(props)=>{
+    return(
+        <form id="changeForm" name="changeForm"
+        onSubmit={handleSignup} action="/change"
+        method="POST" className="changeForm">
+            <input id="user" type="text" name="username" placeholder="Username" />
+            <input id="pass" type="password" name="pass" placeholder="New Password" />
+            <input id="_csrf" type="hidden" name="_csrf" value={props.csrf} />
+            <input className="formSubmit" type="submit" value="Change Password" />
+        </form>
+    );
+};
 const init=async()=>{
     const response=await fetch('/getToken');
     const data=await response.json();
     const loginButton=document.getElementById('loginButton');
     const signupButton=document.getElementById('signupButton');
+    const changeButton=document.getElementById('changeButton');
     loginButton.addEventListener('click',(e)=>{
         e.preventDefault();
         ReactDOM.render(<LoginWindow csrf={data.csrfToken} />, document.getElementById('content'));
@@ -68,6 +81,11 @@ const init=async()=>{
     signupButton.addEventListener('click',(e)=>{
         e.preventDefault();
         ReactDOM.render(<SignupWindow csrf={data.csrfToken} />, document.getElementById('content'));
+        return false;
+    });
+    changeButton.addEventListener('click',(e)=>{
+        e.preventDefault();
+        ReactDOM.render(<ChangeWindow csrf={data.csrfToken} />, document.getElementById('content'));
         return false;
     });
     ReactDOM.render(<LoginWindow csrf={data.csrfToken} />, document.getElementById('content'));

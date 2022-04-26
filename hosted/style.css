@@ -4,6 +4,7 @@
 }
 *{
     font-family: Coolvetica;
+    color: white;
 }
 html, body {
     height: 100%;
@@ -24,12 +25,10 @@ nav:nth-child(1) {
     padding: 5px;
     padding-top: 12px;
     padding-left: 10px;
-    color: white;
     font-size: 1.3em;
     float: left;
 }
 .navlink a, .navlink a:link, .navlink a:visited, .navlink a:hover, .navlink a:active {
-    color: white;
     text-decoration: none;
     padding: 5px;
     border-radius: 4px;
@@ -50,13 +49,10 @@ nav:nth-child(1) {
     text-align: center;
     transition: background-color 0.4s ease;
     display: inline;
-    width: 70px;
+    width: 90px;
     background-color: #ea2;
     border-radius: 1px;
     color: black;
-}
-.makeAnimeSubmit:link, .makeAnimeSubmit:visited, .makeAnimeSubmit:hover, .makeAnimeSubmit:active {
-    color: white;
 }
 .makeAnimeSubmit:hover {
     transition: background-color 0.4s ease;
@@ -82,11 +78,7 @@ nav:nth-child(1) {
     width: 100px;
     background-color: #ea2;
     padding: 3px 0px;
-    color: white;
     text-decoration: none;
-}
-.formSubmit:link, .formSubmit:visited, .formSubmit:hover, .formSubmit:active {
-    color: white;
 }
 .formSubmit:hover {
     transition: background-color 0.4s ease;
@@ -154,17 +146,16 @@ nav:nth-child(1) {
     overflow: hidden;
     text-align: center;
 }
-h3.emptyAnime {
+p.emptyAnime {
     width: 400px;
     font-size: 1.5em;
     margin: 0 auto;
     text-align: center;
     margin-top: 18px;
 }
-h3.animeInfo {
+p.animeInfo {
     width: 600px;
     top: 50%;
     left: 50%;
-    font-size: 1.2em;
-    color:white;
+    font-size: 1.3em;
 }

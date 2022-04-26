@@ -29,6 +29,7 @@ const AnimeForm=(props)=>{
                 <option value="Sci-Fi">Sci-Fi</option>
                 <option value="Shonen">Shonen</option>
                 <option value="Slice of Life">Slice of Life</option>
+                <option value="Other">Other</option>
             </select><br></br><br></br>
             <input id="animeYear" type="number" min="0" name="year" placeholder="Year released" /><br></br><br></br>
             <input id="_csrf" type="hidden" name="_csrf" value={props.csrf} />
@@ -40,7 +41,7 @@ const AnimeList=(props)=>{
     if(props.animes.length === 0){
         return (
             <div className="animeList">
-                <p className="emptyAnime">You don't have a backlog yet.</p>
+                <p className="emptyAnime">Your backlog is empty.</p>
             </div>
         );
     }
@@ -61,20 +62,17 @@ const loadAnimesFromServer=async()=>{
     const response = await fetch('/getAnimes');
     const data = await response.json();
     ReactDOM.render(
-        <AnimeList animes={data.animes} />,
-        document.getElementById('animes')
+        <AnimeList animes={data.animes} />, document.getElementById('animes')
     );
 }
 const init = async () => {
     const response = await fetch('/getToken');
     const data = await response.json();
     ReactDOM.render(
-        <AnimeForm csrf={data.csrfToken} />,
-        document.getElementById('makeAnime')
+        <AnimeForm csrf={data.csrfToken} />, document.getElementById('makeAnime')
     );
     ReactDOM.render(
-        <AnimeList animes={[]} />,
-        document.getElementById('animes')
+        <AnimeList animes={[]} />, document.getElementById('animes')
     );
     loadAnimesFromServer();
 }
