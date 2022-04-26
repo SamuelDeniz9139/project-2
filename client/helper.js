@@ -1,4 +1,4 @@
-const handleError = (message) => {
+const handleError = (message) => {//shows the error message if one occurs
   document.getElementById('errorMessage').textContent = message;
   document.getElementById('animeMessage').classList.remove('hidden');
 };
@@ -22,7 +22,7 @@ const sendPost = async (url, data, handler) => {
     handler(result);
   }
 };
-const hideError=()=>{
+const hideError=()=>{//hides the error message when no error occurrs
   document.getElementById('animeMessage').classList.add('hidden');
 };
 module.exports={
