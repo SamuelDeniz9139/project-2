@@ -40,14 +40,14 @@ const AnimeList=(props)=>{
     if(props.animes.length === 0){
         return (
             <div className="animeList">
-                <h3 className="emptyAnime">You don't have a backlog yet.</h3>
+                <p className="emptyAnime">You don't have a backlog yet.</p>
             </div>
         );
     }
     const animeNodes=props.animes.map(anime => {
         return(
             <div key={anime._id} className="anime">
-                <h3 className="animeInfo"> Title: {anime.name}; Genre: {anime.genre}; Year released: {anime.year} </h3>
+                <p className="animeInfo"> Title: {anime.name}; Genre: {anime.genre}; Year released: {anime.year} </p>
             </div>
         );
     });

@@ -23,13 +23,7 @@ const login = (req, res) => {//logs the user in
   });
 };
 const premiumMode = async (req,res) => {//activates premium mode; not done yet
-  return Account.authenticate((err) => {
-    if (err) {//if there's an error
-      return res.status(401).json({ error: 'Wrong username or password.' });
-    }
-    req.session.account = Account.toAPI(account);
-    return res.json({ redirect: '/maker' });
-  });
+  return res.json({ redirect: '/maker' });
 };
 const change = (req, res) => {//should change the password of the user; not done yet
   const username = `${req.body.username}`;
