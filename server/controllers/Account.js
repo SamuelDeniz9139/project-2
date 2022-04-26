@@ -8,7 +8,7 @@ const logout = (req, res) => {
   req.session.destroy();
   res.redirect('/');
 };
-const login = (req, res) => {//logs yhe user i
+const login = (req, res) => {//logs the user in
   const username = `${req.body.username}`;
   const pass = `${req.body.pass}`;
   if (!username || !pass) {//if the user didn't enter a field
@@ -16,6 +16,15 @@ const login = (req, res) => {//logs yhe user i
   }
   return Account.authenticate(username, pass, (err, account) => {
     if (err || !account) {//if the username and password don't match
+      return res.status(401).json({ error: 'Wrong username or password.' });
+    }
+    req.session.account = Account.toAPI(account);
+    return res.json({ redirect: '/maker' });
+  });
+};
+const premiumMode = async (req,res) => {//activates premium mode; not done yet
+  return Account.authenticate((err) => {
+    if (err) {//if there's an error
       return res.status(401).json({ error: 'Wrong username or password.' });
     }
     req.session.account = Account.toAPI(account);
@@ -33,7 +42,7 @@ const change = (req, res) => {//should change the password of the user; not done
       return res.status(401).json({ error: 'Wrong username or password.' });
     }
     req.session.account = Account.toAPI(account);
-    return res.json({ redirect: '/maker' });
+    return res.json({ redirect: '/' });
   });
 };
 const signup = async (req, res) => {//signs the user up
@@ -58,10 +67,6 @@ const signup = async (req, res) => {//signs the user up
     }
     return res.status(400).json({ error: 'An error occurred.' });
   }
-};
-const premiumMode = async (req,res) => {//activates premium mode; not done yet
-  return res.json({ redirect: '/maker' });
-  //return res.status(201).json({ message: "Premium mode activated." });
 };
 const getToken = (req, res) => res.json({ csrfToken: req.csrfToken() });
 module.exports = {
