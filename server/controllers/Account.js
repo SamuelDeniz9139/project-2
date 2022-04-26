@@ -22,13 +22,6 @@ const login = (req, res) => {//logs the user in
     return res.json({ redirect: '/maker' });
   });
 };
-const getAccounts = (req, res) => AnimeModel.findByOwner(req.session.account._id, (err, docs) => {
-  if (err) {
-    console.log(err);
-    return res.status(400).json({ error: 'An error occurred.' });
-  }
-  return res.json({ animes: docs });
-});
 const change = (req, res) => {//should change the password of the user; not done yet
   const username = `${req.body.username}`;
   const pass = `${req.body.pass}`;
@@ -76,7 +69,6 @@ module.exports = {
   logout,
   change,
   signup,
-  getAccounts,
   premiumMode,
   getToken,
 };

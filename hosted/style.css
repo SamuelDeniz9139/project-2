@@ -34,15 +34,13 @@ nav:nth-child(1) {
     border-radius: 4px;
     background-color: #ea2;
 }
-.navlink a:hover {
-    color: #e72;
-}
 .animeForm {
     border: 1px solid #e72;
     height: 150px;
     width: 200px;
     margin: 10px;
     padding: 10px;
+    color: black;
     background-color: #ea2;
 }
 .makeAnimeSubmit {
@@ -54,8 +52,7 @@ nav:nth-child(1) {
     border-radius: 1px;
     color: black;
 }
-.makeAnimeSubmit:hover {
-    transition: background-color 0.4s ease;
+.makeAnimeSubmit:hover, .formSubmit:hover, .navlink a:hover {
     background-color: #e72;
 }
 .mainForm {
@@ -75,20 +72,16 @@ nav:nth-child(1) {
     margin: 0 auto;
     margin-top: 14px;
     font-size: 1.2em;
-    width: 100px;
+    width: 200px;
     background-color: #ea2;
     padding: 3px 0px;
     text-decoration: none;
 }
-.formSubmit:hover {
-    transition: background-color 0.4s ease;
-    background-color: #e72;
-}
 #user, #pass, #pass2 {
     text-align: center;
+    color: black;
     font-size: 1.1em;
     width: 180px;
-    border-radius: 6px;
 }
 #user:focus, #pass:focus, #pass2:focus {
     outline: none;

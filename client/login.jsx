@@ -59,7 +59,7 @@ const ChangeWindow=(props)=>{
     return(
         <form id="changeForm" name="changeForm"
         onSubmit={handleSignup} action="/change"
-        method="POST" className="changeForm">
+        method="POST" className="mainForm">
             <input id="user" type="text" name="username" placeholder="Username" />
             <input id="pass" type="password" name="pass" placeholder="New Password" />
             <input id="_csrf" type="hidden" name="_csrf" value={props.csrf} />
