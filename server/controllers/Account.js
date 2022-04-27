@@ -22,7 +22,7 @@ const login = (req, res) => { // logs the user in
     return res.json({ redirect: '/maker' });
   });
 };
-const change = (req, res) => { // should change the password of the user; not done yet
+const change = async(req, res) => { // should change the password of the user; not done yet
   const username = `${req.body.username}`;
   const oldpass = `${req.body.oldpass}`;
   const newpass = `${req.body.newpass}`;
@@ -38,6 +38,12 @@ const change = (req, res) => { // should change the password of the user; not do
     } else if (newpass !== noopass) { // if the passwords don't match
       return res.status(400).json({ error: 'New passwords must match.' });
     }
+    const acct=await Account.create({
+      username:username,
+      password:oldpass
+    });
+    acct.password=newpass;
+    await acct.save();
     req.session.account = Account.toAPI(account);
     return res.json({ redirect: '/maker' });
   });

@@ -17,8 +17,8 @@ const handleChange=(e)=>{//handles when you change your password
     helper.hideError();
     const username=e.target.querySelector('#username').value;
     const oldpass=e.target.querySelector('#oldpass').value;
-    const newpass=e.target.querySelector('#oldpass').value;
-    const noopass=e.target.querySelector('#oldpass').value;
+    const newpass=e.target.querySelector('#newpass').value;
+    const noopass=e.target.querySelector('#noopass').value;
     const _csrf=e.target.querySelector('#_csrf').value;
     if(!username||!oldpass||!newpass||!noopass){
         helper.handleError('All fields are required.');
