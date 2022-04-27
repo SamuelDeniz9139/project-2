@@ -31,8 +31,8 @@ const change = (req, res) => { // should change the password of the user; not do
   return Account.authenticate(username, pass, (err, account) => {
     if (err) { // if there's an error
       return res.status(401).json({ error: 'Something went wrong.' });
-    } else if (!account) {
-      return res.status(401).json({ error: 'This should change your password.' });
+    } else if (account) {
+      return res.status(401).json({ error: "That's your current password." });
     }
     req.session.account = Account.toAPI(account);
     return res.json({ redirect: '/' });
