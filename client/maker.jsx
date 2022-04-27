@@ -62,7 +62,7 @@ const AnimeForm=(props)=>{
                 <option className='animeField' value="Shonen">Shonen</option>
                 <option className='animeField' value="Slice of Life">Slice of Life</option>
             </select><br></br><br></br>
-            <input id="animeYear" type="hidden" value="skip" placeholder="Year released" />
+            <input id="animeYear" type="number" min="0" name="year" placeholder="Year released" className='animeField' /><br></br><br></br>
             <input id="_csrf" type="hidden" name="_csrf" value={props.csrf} />
             <input className="makeAnimeSubmit" type="submit" value="Add to list" />
         </form>
@@ -86,7 +86,7 @@ const PremiumForm=(props)=>{
                 <option className='animeField' value="Slice of Life">Slice of Life</option>
                 <option className='animeField' value="Other">Other</option>
             </select><br></br><br></br>
-            <input id="animeYear" type="number" min="0" name="year" placeholder="Year released" /><br></br><br></br>
+            <input id="animeYear" type="number" min="0" name="year" placeholder="Year released" className='animeField' /><br></br><br></br>
             <input id="_csrf" type="hidden" name="_csrf" value={props.csrf} />
             <input className="makeAnimeSubmit" type="submit" value="Add to list" />
         </form>
