@@ -42,8 +42,7 @@ const AnimeList = (props) => {
 const PremiumSwitch=(props)=>{
     return(
         <form id="premiumForm" onSubmit={premInit}
-        name="premiumForm" action="/premium"
-        method="POST" className="premiumForm">
+        name="premiumForm" action="/premium" method="POST">
             <input id="_csrf" type="hidden" name="_csrf" value={props.csrf} />
             <input className="formSubmit" type="submit" value="Activate Premium" />
         </form>
@@ -63,7 +62,7 @@ const AnimeForm=(props)=>{
                 <option className='animeField' value="Shonen">Shonen</option>
                 <option className='animeField' value="Slice of Life">Slice of Life</option>
             </select><br></br><br></br>
-            <input id="animeYear" type="hidden" value="skip" placeholder="Year released" /><br></br><br></br>
+            <input id="animeYear" type="hidden" value="skip" placeholder="Year released" />
             <input id="_csrf" type="hidden" name="_csrf" value={props.csrf} />
             <input className="makeAnimeSubmit" type="submit" value="Add to list" />
         </form>
