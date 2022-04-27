@@ -19,7 +19,7 @@ const AnimeForm=(props)=>{
         name="animeForm" action="/maker"
         method="POST" className="animeForm">
             <input id="animeName" type="text" name="name" placeholder="Anime Title" /><br></br><br></br>
-            <label for="animeGenre">Genre: </label>
+            <label htmlFor="animeGenre">Genre: </label>
             <select className='animeField' id="animeGenre" name="genre">
                 <option value="Action">Action</option>
                 <option value="Comedy">Comedy</option>
@@ -63,6 +63,7 @@ const PremiumSwitch=(props)=>{
         <form id="premiumForm" onSubmit={init}
         name="premiumForm" action="/premium"
         method="POST" className="premiumForm">
+            <input id="_csrf" type="hidden" name="_csrf" value={props.csrf} />
             <input className="formSubmit" type="submit" value="Activate Premium" />
         </form>
     );

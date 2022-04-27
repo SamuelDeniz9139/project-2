@@ -43,6 +43,9 @@ nav:nth-child(1) {
     color: black;
     background-color: #ea2;
 }
+.animeField {
+    color:black;
+}
 .makeAnimeSubmit {
     text-align: center;
     transition: background-color 0.4s ease;
