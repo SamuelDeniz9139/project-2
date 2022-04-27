@@ -12,6 +12,7 @@ html, body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    background-color:#00d4d4;
 }
 nav {
     width: 100%;
@@ -19,19 +20,19 @@ nav {
     background-color: #ea2;
 }
 nav:nth-child(1) {
-    padding-left: 25px;
+    padding-right: 25px;
 }
 .navlink {
     padding: 5px;
     padding-top: 12px;
     padding-left: 10px;
     font-size: 1.3em;
-    float: left;
+    float: right;
 }
 .navlink a, .navlink a:link, .navlink a:visited, .navlink a:hover, .navlink a:active {
     text-decoration: none;
     padding: 5px;
-    border-radius: 4px;
+    border-radius: 8px;
     background-color: #ea2;
 }
 .animeForm {
@@ -40,12 +41,12 @@ nav:nth-child(1) {
     border: 1px solid #e72;
     height: 150px;
     width: 160px;
-    margin-top: 80px;
+    margin-top: 60px;
     margin-left: 10px;
     padding: 10px;
     background-color: #ea2;
 }
-.animeField {
+.animeField, .makeAnimeSubmit, #user, #pass, #pass2, #errorMessage {
     color:black;
 }
 .makeAnimeSubmit {
@@ -54,8 +55,6 @@ nav:nth-child(1) {
     display: inline;
     width: 90px;
     background-color: #ea2;
-    border-radius: 1px;
-    color: black;
 }
 .makeAnimeSubmit:hover, .formSubmit:hover, .navlink a:hover {
     background-color: #e72;
@@ -84,7 +83,6 @@ nav:nth-child(1) {
 }
 #user, #pass, #pass2 {
     text-align: center;
-    color: black;
     font-size: 1.1em;
     width: 180px;
 }
@@ -112,8 +110,6 @@ nav:nth-child(1) {
 }
 #errorMessage {
     font-size: 1.2em;
-    font-weight: bold;
-    color: black;
 }
 #anime {
     z-index: 225;
@@ -136,10 +132,9 @@ nav:nth-child(1) {
 }
 .anime {
     width: 75%;
-    margin: 5px;
+    margin: 10px;
     background-color: #ea2;
     border: 1px solid #e72;
-    padding: 2px;
     min-height: 30px;
     overflow: hidden;
     text-align: center;

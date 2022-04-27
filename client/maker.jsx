@@ -18,6 +18,7 @@ const checkForDupes = async(newName) => {
     const response = await fetch('/getAnimes');
     const data = await response.json();
     let animeArray=data.animes;
+    console.log(animeArray);
     for (let list=0;list<animeArray.length;list++){
         if(animeArray[list].name===newName){
             helper.handleError();
@@ -25,7 +26,7 @@ const checkForDupes = async(newName) => {
         }
     }
 }
-const loadAnimesFromServer=async()=>{
+const loadAnimesFromServer = async() => {
     const response = await fetch('/getAnimes');
     const data = await response.json();
     ReactDOM.render(
