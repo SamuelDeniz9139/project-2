@@ -34,7 +34,7 @@ nav:nth-child(1) {
     border-radius: 4px;
     background-color: #ea2;
 }
-.animeForm {
+.animeForm, .premiumForm {
     border: 1px solid #e72;
     height: 150px;
     width: 200px;
@@ -42,6 +42,12 @@ nav:nth-child(1) {
     padding: 10px;
     color: black;
     background-color: #ea2;
+}
+.animeForm {
+    height: 120px;
+}
+.premiumForm {
+    height: 150px;
 }
 .animeField {
     color:black;
