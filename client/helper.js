@@ -1,6 +1,6 @@
 const handleError = (message) => {//shows the error message if one occurs
-  document.getElementById('errorMessage').textContent = message;
-  document.getElementById('animeMessage').classList.remove('hidden');
+  document.getElementById('errorMessage').innerHTML = message;
+  document.getElementById('errorMessage').classList.remove('hidden');
 };
 const sendPost = async (url, data, handler) => {
   const response = await fetch(url, {
