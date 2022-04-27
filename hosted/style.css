@@ -63,6 +63,8 @@ nav:nth-child(1) {
     background-color: #e72;
 }
 .mainForm {
+    align-items: center;
+    justify-content: center;
     height: 300px;
     width: 350px;
     margin: 0 auto;
@@ -127,11 +129,6 @@ nav:nth-child(1) {
     min-width: 400px;
     margin-left: 200px;
 }
-#content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 .anime {
     width: 75%;
     margin: 10px;
@@ -150,4 +147,9 @@ p.emptyAnime {
     margin: 0 auto;
     text-align: center;
     margin-top: 18px;
+}
+h1.title{
+    font-size: 2em;
+    text-align: center;
+    margin-top: 20px;
 }

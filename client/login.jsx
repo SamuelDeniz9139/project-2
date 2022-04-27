@@ -80,18 +80,22 @@ const ChangeWindow=(props)=>{
 const init=async()=>{//initializes content on the page
     const response=await fetch('/getToken');
     const data=await response.json();
+    document.getElementById('title').innerHTML="Welcome to Anime Backlogger!"
     document.getElementById('loginButton').addEventListener('click',(e)=>{
         e.preventDefault();
+        document.getElementById('title').innerHTML="Welcome to Anime Backlogger!"
         ReactDOM.render(<LoginWindow csrf={data.csrfToken} />, document.getElementById('content'));
         return false;
     });
     document.getElementById('signupButton').addEventListener('click',(e)=>{
         e.preventDefault();
+        document.getElementById('title').innerHTML="Sign up for Anime Backlogger!"
         ReactDOM.render(<SignupWindow csrf={data.csrfToken} />, document.getElementById('content'));
         return false;
     });
     document.getElementById('changeButton').addEventListener('click',(e)=>{
         e.preventDefault();
+        document.getElementById('title').innerHTML="Changing your password?"
         ReactDOM.render(<ChangeWindow csrf={data.csrfToken} />, document.getElementById('content'));
         return false;
     });
