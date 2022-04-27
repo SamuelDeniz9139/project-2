@@ -6,7 +6,7 @@ const handleAnime = async(e) => {//handles the addition to the list
     let genre=e.target.querySelector('#animeGenre').value;
     let year=e.target.querySelector('#animeYear').value;
     const _csrf=e.target.querySelector('#_csrf').value;
-    if(!name||!genre||!year){
+    if(!name||!genre||!year){//requires all fields are filled
         helper.handleError('All fields are required.');
         return false;
     }
@@ -14,14 +14,11 @@ const handleAnime = async(e) => {//handles the addition to the list
     const data = await response.json();
     let animeArray=data.animes;
     for (let list=0;list<animeArray.length;list++){//checks for an anime of that name
-        if(animeArray[list].name == name){//if it's already on the list
+        if(animeArray[list].name === name){//if it's already on the list
             helper.handleError('That anime is already on the list.');
             return false;
-        } else {
-            console.log(animeArray[list].name+" "+newName);
         }
     }
-    checkForDupes(name);
     helper.sendPost(e.target.action, {name,genre,year,_csrf}, loadAnimesFromServer);
     return false;
 }
