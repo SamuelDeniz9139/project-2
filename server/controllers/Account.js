@@ -24,16 +24,25 @@ const login = (req, res) => { // logs the user in
 };
 const change = (req, res) => { // should change the password of the user; not done yet
   const username = `${req.body.username}`;
-  const pass = `${req.body.pass}`;
-  if (!username || !pass) { // if one of the fields is empty
+  const oldpass = `${req.body.oldpass}`;
+  const newpass = `${req.body.newpass}`;
+  const noopass = `${req.body.noopass}`;
+  if (!username || !oldpass || !newpass || !noopass) { // if one of the fields is empty
     return res.status(400).json({ error: 'Requires all fields.' });
   }
   return Account.authenticate(username, pass, (err, account) => {
     if (err) { // if there's an error
       return res.status(401).json({ error: 'Something went wrong.' });
-    } else if (account) {
-      return res.status(401).json({ error: "That's your current password." });
-    }
+    } else if (!account) {
+      return res.status(400).json({ error: "That account doesn't exist." });
+    } else if (newpass !== noopass) { // if the passwords don't match
+      return res.status(400).json({ error: 'New passwords must match.' });
+    } //next segment taken from https://masteringjs.io/tutorials/mongoose/update
+    await Account.updateOne({ username: username }, {
+      password: noopass
+    });
+    const doc = await Account.findOne();
+    doc.password; //change it to new password
     req.session.account = Account.toAPI(account);
     return res.json({ redirect: '/' });
   });
