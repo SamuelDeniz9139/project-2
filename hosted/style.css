@@ -13,6 +13,9 @@ html, body {
     padding: 0;
     overflow-x: hidden;
     background-image:url("img/aqua.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 nav {
     width: 100%;
@@ -70,7 +73,6 @@ nav:nth-child(1) {
     text-align: center;
 }
 .formSubmit {
-    transition: background-color 0.4s ease;
     display: block;
     text-align: center;
     margin: 0 auto;
@@ -134,6 +136,9 @@ nav:nth-child(1) {
     width: 75%;
     margin: 10px;
     background-image: url("img/dio.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     border: 1px solid #e72;
     min-height: 30px;
     overflow: hidden;
