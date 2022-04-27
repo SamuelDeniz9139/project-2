@@ -19,7 +19,7 @@ const checkForDupes = async(newName) => {//checks if an anime of that name is al
     const data = await response.json();
     let animeArray=data.animes;
     for (let list=0;list<animeArray.length;list++){
-        if(animeArray[list].name===newName){//if it's already on the list
+        if(animeArray[list].name == newName){//if it's already on the list
             helper.handleError('That anime is already on the list.');
             return false;
         } else {
@@ -27,14 +27,14 @@ const checkForDupes = async(newName) => {//checks if an anime of that name is al
         }
     }
 }
-const loadAnimesFromServer = async() => {
+const loadAnimesFromServer = async() => {//loads the animes from the server
     const response = await fetch('/getAnimes');
     const data = await response.json();
     ReactDOM.render(
         <AnimeList animes={data.animes} />, document.getElementById('animes')
     );
 }
-const premInit = (e) => {
+const premInit = (e) => {//reloads the main page with premium form
     e.preventDefault();
     helper.hideError();
     init(1);
@@ -43,7 +43,7 @@ const AnimeList = (props) => {
     if(props.animes.length === 0){
         return (
             <div className="animeList">
-                <p className="emptyAnime">Your backlog is empty.</p>
+                <h1 className="emptyAnime">Your backlog is empty.</h1>
             </div>
         );
     }
@@ -72,7 +72,7 @@ const PremiumSwitch=(props)=>{
     );
 }
 const AnimeForm=(props)=>{
-    return (
+    return (//the form that lets you add variables to your anime
         <form id="animeForm" onSubmit={handleAnime}
         name="animeForm" action="/maker"
         method="POST" className="animeForm">
@@ -92,7 +92,7 @@ const AnimeForm=(props)=>{
     );
 }
 const PremiumForm=(props)=>{
-    return (
+    return (//the form for the premium version
         <form id="animeForm" onSubmit={handleAnime}
         name="animeForm" action="/maker"
         method="POST" className="animeForm">
@@ -115,7 +115,7 @@ const PremiumForm=(props)=>{
         </form>
     );
 }
-const init = async (prem) => {
+const init = async (prem) => {//loads the preButton and data
     const response = await fetch('/getToken');
     const data = await response.json();
     const preButton=document.getElementById("premiumButton");

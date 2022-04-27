@@ -2,7 +2,7 @@ const helper=require('./helper.js');
 const handleLogin=(e)=>{//handles when you want to log in normally
     e.preventDefault();
     helper.hideError();
-    const user=e.target.querySelector('#user').value;
+    const user=e.target.querySelector('#username').value;
     const pass=e.target.querySelector('#pass').value;
     const _csrf=e.target.querySelector('#_csrf').value;
     if(!user||!pass){
@@ -33,7 +33,7 @@ const handleSignup=(e)=>{//handles when you want to sign up
 const handleChange=(e)=>{//handles when you change your password
     e.preventDefault();
     helper.hideError();
-    const user=e.target.querySelector('#user').value;
+    const user=e.target.querySelector('#username').value;
     const pass=e.target.querySelector('#pass').value;
     const _csrf=e.target.querySelector('#_csrf').value;
     if(!user||!pass){
