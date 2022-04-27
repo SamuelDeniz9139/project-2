@@ -12,6 +12,19 @@ const handleLogin=(e)=>{//handles when you want to log in normally
     helper.sendPost(e.target.action,{user,pass,_csrf});
     return false;
 }
+const handleChange=(e)=>{//handles when you change your password
+    e.preventDefault();
+    helper.hideError();
+    const user=e.target.querySelector('#username').value;
+    const pass=e.target.querySelector('#pass').value;
+    const _csrf=e.target.querySelector('#_csrf').value;
+    if(!user||!pass){
+        helper.handleError('All fields are required.');
+        return false;
+    }
+    helper.sendPost(e.target.action,{user,pass,_csrf});
+    return false;
+}
 const handleSignup=(e)=>{//handles when you want to sign up
     e.preventDefault();
     helper.hideError();
@@ -28,19 +41,6 @@ const handleSignup=(e)=>{//handles when you want to sign up
         return false;
     }
     helper.sendPost(e.target.action,{user,pass,pass2,_csrf});
-    return false;
-}
-const handleChange=(e)=>{//handles when you change your password
-    e.preventDefault();
-    helper.hideError();
-    const user=e.target.querySelector('#username').value;
-    const pass=e.target.querySelector('#pass').value;
-    const _csrf=e.target.querySelector('#_csrf').value;
-    if(!user||!pass){
-        helper.handleError('All fields are required.');
-        return false;
-    }
-    helper.sendPost(e.target.action,{user,pass,_csrf});
     return false;
 }
 const LoginWindow=(props)=>{
