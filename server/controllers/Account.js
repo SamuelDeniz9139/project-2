@@ -37,12 +37,7 @@ const change = (req, res) => { // should change the password of the user; not do
       return res.status(400).json({ error: "That account doesn't exist." });
     } else if (newpass !== noopass) { // if the passwords don't match
       return res.status(400).json({ error: 'New passwords must match.' });
-    } //next segment taken from https://masteringjs.io/tutorials/mongoose/update
-    await Account.updateOne({ username: username }, {
-      password: noopass
-    });
-    const doc = await Account.findOne();
-    doc.password; //change it to new password
+    }
     req.session.account = Account.toAPI(account);
     return res.json({ redirect: '/' });
   });
