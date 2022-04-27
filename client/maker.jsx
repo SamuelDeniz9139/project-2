@@ -60,7 +60,7 @@ const AnimeList=(props)=>{
 };
 const PremiumSwitch=(props)=>{
     return(
-        <form id="premiumForm" onSubmit={premInit}
+        <form id="premiumForm" onSubmit={init}
         name="premiumForm" action="/premium"
         method="POST" className="premiumForm">
             <input className="formSubmit" type="submit" value="Activate Premium" />
@@ -73,23 +73,6 @@ const loadAnimesFromServer=async()=>{
     ReactDOM.render(
         <AnimeList animes={data.animes} />, document.getElementById('animes')
     );
-}
-const premInit = async () => {
-    const response = await fetch('/getToken');
-    const data = await response.json();
-    const preButton=document.getElementById("premiumButton");
-    ReactDOM.render(
-        <AnimeForm csrf={data.csrfToken} />, document.getElementById('makeAnime')
-    );
-    ReactDOM.render(
-        <AnimeList animes={[]} />, document.getElementById('animes')
-    );
-    preButton.addEventListener('click',(e)=>{
-        e.preventDefault();
-        ReactDOM.render(<PremiumSwitch csrf={data.csrfToken} />, document.getElementById('animes'));
-        return false;
-    });
-    loadAnimesFromServer();
 }
 const init = async () => {
     const response = await fetch('/getToken');

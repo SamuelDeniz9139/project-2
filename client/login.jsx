@@ -30,6 +30,19 @@ const handleSignup=(e)=>{
     helper.sendPost(e.target.action,{user,pass,pass2,_csrf});
     return false;
 }
+const handleChange=(e)=>{
+    e.preventDefault();
+    helper.hideError();
+    const user=e.target.querySelector('#user').value;
+    const pass=e.target.querySelector('#pass').value;
+    const _csrf=e.target.querySelector('#_csrf').value;
+    if(!user||!pass){
+        helper.handleError('All fields are required.');
+        return false;
+    }
+    helper.sendPost(e.target.action,{user,pass,_csrf});
+    return false;
+}
 const LoginWindow=(props)=>{
     return(
         <form id="loginForm" name="loginForm"
@@ -58,7 +71,7 @@ const SignupWindow=(props)=>{
 const ChangeWindow=(props)=>{
     return(
         <form id="changeForm" name="changeForm"
-        onSubmit={handleSignup} action="/change"
+        onSubmit={handleChange} action="/change"
         method="POST" className="mainForm">
             <input id="user" type="text" name="username" placeholder="Username" />
             <input id="pass" type="password" name="pass" placeholder="New Password" />
