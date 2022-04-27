@@ -14,7 +14,7 @@ const handleAnime = (e) => {
     helper.sendPost(e.target.action, {name,genre,year,_csrf}, loadAnimesFromServer);
     return false;
 }
-const checkForDupes=(newName)=>{
+const checkForDupes = async(newName) => {
     const response = await fetch('/getAnimes');
     const data = await response.json();
     let animeArray=data.animes;
