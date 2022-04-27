@@ -90,7 +90,7 @@ nav:nth-child(1) {
     padding: 3px 0px;
     text-decoration: none;
 }
-#username, #pass, #pass2 {
+.enterForm {
     text-align: center;
     font-size: 1.1em;
     width: 180px;

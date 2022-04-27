@@ -30,7 +30,7 @@ const change = (req, res) => { // should change the password of the user; not do
   if (!username || !oldpass || !newpass || !noopass) { // if one of the fields is empty
     return res.status(400).json({ error: 'Requires all fields.' });
   }
-  return Account.authenticate(username, pass, (err, account) => {
+  return Account.authenticate(username, oldpass, newpass, noopass, (err, account) => {
     if (err) { // if there's an error
       return res.status(401).json({ error: 'Something went wrong.' });
     } else if (!account) {
@@ -39,7 +39,7 @@ const change = (req, res) => { // should change the password of the user; not do
       return res.status(400).json({ error: 'New passwords must match.' });
     }
     req.session.account = Account.toAPI(account);
-    return res.json({ redirect: '/' });
+    return res.json({ redirect: '/maker' });
   });
 };
 const signup = async (req, res) => { // signs the user up
