@@ -15,7 +15,7 @@ const handleLogin=(e)=>{//handles when you want to log in normally
 const handleSignup=(e)=>{//handles when you want to sign up
     e.preventDefault();
     helper.hideError();
-    const user=e.target.querySelector('#user').value;
+    const user=e.target.querySelector('#username').value;
     const pass=e.target.querySelector('#pass').value;
     const pass2=e.target.querySelector('#pass2').value;
     const _csrf=e.target.querySelector('#_csrf').value;
@@ -50,7 +50,7 @@ const LoginWindow=(props)=>{
             <input id="user" type="text" name="username" placeholder="Username" />
             <input id="pass" type="password" name="pass" placeholder="Password" />
             <input id="_csrf" type="hidden" name="_csrf" value={props.csrf} />
-            <input className="formSubmit" type="submit" value="Sign in" />
+            <input className="formSubmit" type="submit" value="Sign In!" />
         </form>
     );
 };
@@ -58,11 +58,11 @@ const SignupWindow=(props)=>{
     return(//serves as the menu for when you want to sign up
         <form id="signupForm" name="signupForm" onSubmit={handleSignup}
         action="/signup" method="POST" className="mainForm">
-            <input id="user" type="text" name="username" placeholder="Username" />
+            <input id="username" type="text" name="username" placeholder="Username" />
             <input id="pass" type="password" name="pass" placeholder="Password" />
             <input id="pass2" type="password" name="pass2" placeholder="Retype Password" />
             <input id="_csrf" type="hidden" name="_csrf" value={props.csrf} />
-            <input className="formSubmit" type="submit" value="Sign in" />
+            <input className="formSubmit" type="submit" value="Sign Up!" />
         </form>
     );
 };

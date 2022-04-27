@@ -29,7 +29,6 @@ nav:nth-child(1) {
     border: 1px solid #e72;
 }
 .navlink {
-    position: absolute;
     padding: 5px;
     padding-top: 12px;
     padding-left: 10px;
