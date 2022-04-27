@@ -6,8 +6,15 @@
     font-family: Coolvetica;
     color: white;
 }
-.animeField, .makeAnimeSubmit, #user, #pass, #pass2, #errorMessage, h1, .enterForm, p.emptyAnime {
+.animeField, .makeAnimeSubmit, #user, #pass, #pass2, #errorMessage, h1, .enterForm {
     color:black;
+}
+h1{
+    font-size: 4em;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
 }
 html, body {
     height: 100%;
@@ -123,7 +130,7 @@ nav:nth-child(1) {
     transform: rotate(330deg);
 }
 #animes {
-    width: 90%;
+    width: 80%;
     min-width: 400px;
     margin-left: 200px;
 }
@@ -137,11 +144,4 @@ nav:nth-child(1) {
     min-height: 30px;
     overflow: hidden;
     text-align: center;
-}
-h1{
-    font-size: 4em;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    margin-top: 20px;
 }

@@ -11,7 +11,7 @@ const sendPost = async (url, data, handler) => {
     body: JSON.stringify(data),
   });
   const result = await response.json();
-  document.getElementById('animeMessage').classList.add('hidden');
+  hideError();
   if(result.error) {
     handleError(result.error);
   }
@@ -23,7 +23,7 @@ const sendPost = async (url, data, handler) => {
   }
 };
 const hideError=()=>{//hides the error message when no error occurrs
-  document.getElementById('animeMessage').classList.add('hidden');
+  document.getElementById('errorMessage').classList.add('hidden');
 };
 module.exports={
   handleError,
