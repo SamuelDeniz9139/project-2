@@ -47,8 +47,8 @@ const LoginWindow=(props)=>{
     return(//serves as the menu for when you want to log in
         <form id="loginForm" name="loginForm" onSubmit={handleLogin}
         action="/login" method="POST" className="mainForm">
-            <input id="user" type="text" name="username" placeholder="Username" />
-            <input id="pass" type="password" name="pass" placeholder="Password" />
+            <input className="enterForm" id="username" type="text" name="username" placeholder="Username" />
+            <input className="enterForm" id="pass" type="password" name="pass" placeholder="Password" />
             <input id="_csrf" type="hidden" name="_csrf" value={props.csrf} />
             <input className="formSubmit" type="submit" value="Sign In!" />
         </form>
@@ -58,9 +58,9 @@ const SignupWindow=(props)=>{
     return(//serves as the menu for when you want to sign up
         <form id="signupForm" name="signupForm" onSubmit={handleSignup}
         action="/signup" method="POST" className="mainForm">
-            <input id="username" type="text" name="username" placeholder="Username" />
-            <input id="pass" type="password" name="pass" placeholder="Password" />
-            <input id="pass2" type="password" name="pass2" placeholder="Retype Password" />
+            <input className="enterForm" id="username" type="text" name="username" placeholder="Username" />
+            <input className="enterForm" id="pass" type="password" name="pass" placeholder="Password" />
+            <input className="enterForm" id="pass2" type="password" name="pass2" placeholder="Retype Password" />
             <input id="_csrf" type="hidden" name="_csrf" value={props.csrf} />
             <input className="formSubmit" type="submit" value="Sign Up!" />
         </form>
@@ -70,8 +70,8 @@ const ChangeWindow=(props)=>{
     return(//serves as the menu for when you want to change your password
         <form id="changeForm" name="changeForm" onSubmit={handleChange}
         action="/change" method="POST" className="mainForm">
-            <input id="user" type="text" name="username" placeholder="Username" />
-            <input id="pass" type="password" name="pass" placeholder="New Password" />
+            <input className="enterForm" id="username" type="text" name="username" placeholder="Username" />
+            <input className="enterForm" id="pass" type="password" name="pass" placeholder="New Password" />
             <input id="_csrf" type="hidden" name="_csrf" value={props.csrf} />
             <input className="formSubmit" type="submit" value="Change Password" />
         </form>
