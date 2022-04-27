@@ -12,7 +12,7 @@ html, body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    background-color:#00d4d4;
+    background-image:url("img/aqua.png");
 }
 nav {
     width: 100%;
@@ -121,9 +121,9 @@ nav:nth-child(1) {
     transform: rotate(330deg);
 }
 #animes {
-    width: 100%;
+    width: 90%;
     min-width: 400px;
-    margin: 0 auto;
+    margin-left: 200px;
 }
 #content {
     display: flex;
@@ -133,7 +133,7 @@ nav:nth-child(1) {
 .anime {
     width: 75%;
     margin: 10px;
-    background-color: #ea2;
+    background-image: url("img/dio.png");
     border: 1px solid #e72;
     min-height: 30px;
     overflow: hidden;

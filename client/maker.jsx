@@ -22,6 +22,8 @@ const checkForDupes = async(newName) => {//checks if an anime of that name is al
         if(animeArray[list][1]===newName){//if it's already on the list
             helper.handleError('That anime is already on the list.');
             return false;
+        } else {
+            console.log(animeArray[list][1]+" "+newName);
         }
     }
 }
