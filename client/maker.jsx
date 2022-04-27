@@ -29,7 +29,9 @@ const AnimeList = (props) => {
     const animeNodes=props.animes.map(anime => {
         return(
             <div key={anime._id} className="anime">
-                <p className="animeInfo"> Title: {anime.name}; Genre: {anime.genre}; Year released: {anime.year} </p>
+                <h2 className="animeInfo">Title: {anime.name} </h2><br></br>
+                <p>Genre: {anime.genre} </p><br></br>
+                <p>Year released: {anime.year} </p>
             </div>
         );
     });
@@ -72,7 +74,7 @@ const PremiumForm=(props)=>{
     return (
         <form id="animeForm" onSubmit={handleAnime}
         name="animeForm" action="/maker"
-        method="POST" className="premiumForm">
+        method="POST" className="animeForm">
             <input id="animeName" type="text" name="name" placeholder="Anime Title" /><br></br><br></br>
             <label htmlFor="animeGenre">Genre: </label>
             <select className='animeField' id="animeGenre" name="genre">

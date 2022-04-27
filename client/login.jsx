@@ -1,5 +1,5 @@
 const helper=require('./helper.js');
-const handleLogin=(e)=>{
+const handleLogin=(e)=>{//handles when you want to log in normally
     e.preventDefault();
     helper.hideError();
     const user=e.target.querySelector('#user').value;
@@ -12,7 +12,7 @@ const handleLogin=(e)=>{
     helper.sendPost(e.target.action,{user,pass,_csrf});
     return false;
 }
-const handleSignup=(e)=>{
+const handleSignup=(e)=>{//handles when you want to sign up
     e.preventDefault();
     helper.hideError();
     const user=e.target.querySelector('#user').value;
@@ -30,7 +30,7 @@ const handleSignup=(e)=>{
     helper.sendPost(e.target.action,{user,pass,pass2,_csrf});
     return false;
 }
-const handleChange=(e)=>{
+const handleChange=(e)=>{//handles when you change your password
     e.preventDefault();
     helper.hideError();
     const user=e.target.querySelector('#user').value;
@@ -44,7 +44,7 @@ const handleChange=(e)=>{
     return false;
 }
 const LoginWindow=(props)=>{
-    return(
+    return(//serves as the menu for when you want to log in
         <form id="loginForm" name="loginForm"
         onSubmit={handleLogin} action="/login"
         method="POST" className="mainForm">
@@ -56,7 +56,7 @@ const LoginWindow=(props)=>{
     );
 };
 const SignupWindow=(props)=>{
-    return(
+    return(//serves as the menu for when you want to sign up
         <form id="signupForm" name="signupForm"
         onSubmit={handleSignup} action="/signup"
         method="POST" className="mainForm">
@@ -69,7 +69,7 @@ const SignupWindow=(props)=>{
     );
 };
 const ChangeWindow=(props)=>{
-    return(
+    return(//serves as the menu for when you want to change your password
         <form id="changeForm" name="changeForm"
         onSubmit={handleChange} action="/change"
         method="POST" className="mainForm">
@@ -80,23 +80,20 @@ const ChangeWindow=(props)=>{
         </form>
     );
 };
-const init=async()=>{
+const init=async()=>{//initializes content on the page
     const response=await fetch('/getToken');
     const data=await response.json();
-    const loginButton=document.getElementById('loginButton');
-    const signupButton=document.getElementById('signupButton');
-    const changeButton=document.getElementById('changeButton');
-    loginButton.addEventListener('click',(e)=>{
+    document.getElementById('loginButton').addEventListener('click',(e)=>{
         e.preventDefault();
         ReactDOM.render(<LoginWindow csrf={data.csrfToken} />, document.getElementById('content'));
         return false;
     });
-    signupButton.addEventListener('click',(e)=>{
+    document.getElementById('signupButton').addEventListener('click',(e)=>{
         e.preventDefault();
         ReactDOM.render(<SignupWindow csrf={data.csrfToken} />, document.getElementById('content'));
         return false;
     });
-    changeButton.addEventListener('click',(e)=>{
+    document.getElementById('changeButton').addEventListener('click',(e)=>{
         e.preventDefault();
         ReactDOM.render(<ChangeWindow csrf={data.csrfToken} />, document.getElementById('content'));
         return false;

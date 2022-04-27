@@ -35,12 +35,13 @@ nav:nth-child(1) {
     background-color: #ea2;
 }
 .animeForm {
+    position: absolute;
+    top: 0;
     border: 1px solid #e72;
     height: 150px;
     width: 160px;
     margin: 10px;
     padding: 10px;
-    color: black;
     background-color: #ea2;
 }
 .animeField {
@@ -123,11 +124,11 @@ nav:nth-child(1) {
     transform: rotate(330deg);
 }
 #animes {
-    width: 40%;
-    min-width: 300px;
+    width: 60%;
+    min-width: 400px;
     margin: 0 auto;
 }
-#animeContent, #content {
+#content {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -149,7 +150,7 @@ p.emptyAnime {
     text-align: center;
     margin-top: 18px;
 }
-p.animeInfo {
+h2.animeInfo {
     width: 600px;
     top: 50%;
     left: 50%;
