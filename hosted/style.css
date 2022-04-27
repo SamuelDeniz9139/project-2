@@ -121,7 +121,7 @@ nav:nth-child(1) {
     transform: rotate(330deg);
 }
 #animes {
-    width: 60%;
+    width: 100%;
     min-width: 400px;
     margin: 0 auto;
 }

@@ -45,9 +45,8 @@ const handleChange=(e)=>{//handles when you change your password
 }
 const LoginWindow=(props)=>{
     return(//serves as the menu for when you want to log in
-        <form id="loginForm" name="loginForm"
-        onSubmit={handleLogin} action="/login"
-        method="POST" className="mainForm">
+        <form id="loginForm" name="loginForm" onSubmit={handleLogin}
+        action="/login" method="POST" className="mainForm">
             <input id="user" type="text" name="username" placeholder="Username" />
             <input id="pass" type="password" name="pass" placeholder="Password" />
             <input id="_csrf" type="hidden" name="_csrf" value={props.csrf} />
@@ -57,9 +56,8 @@ const LoginWindow=(props)=>{
 };
 const SignupWindow=(props)=>{
     return(//serves as the menu for when you want to sign up
-        <form id="signupForm" name="signupForm"
-        onSubmit={handleSignup} action="/signup"
-        method="POST" className="mainForm">
+        <form id="signupForm" name="signupForm" onSubmit={handleSignup}
+        action="/signup" method="POST" className="mainForm">
             <input id="user" type="text" name="username" placeholder="Username" />
             <input id="pass" type="password" name="pass" placeholder="Password" />
             <input id="pass2" type="password" name="pass2" placeholder="Retype Password" />
@@ -70,9 +68,8 @@ const SignupWindow=(props)=>{
 };
 const ChangeWindow=(props)=>{
     return(//serves as the menu for when you want to change your password
-        <form id="changeForm" name="changeForm"
-        onSubmit={handleChange} action="/change"
-        method="POST" className="mainForm">
+        <form id="changeForm" name="changeForm" onSubmit={handleChange}
+        action="/change" method="POST" className="mainForm">
             <input id="user" type="text" name="username" placeholder="Username" />
             <input id="pass" type="password" name="pass" placeholder="New Password" />
             <input id="_csrf" type="hidden" name="_csrf" value={props.csrf} />

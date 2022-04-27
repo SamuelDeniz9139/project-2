@@ -1,5 +1,5 @@
 const helper=require('./helper.js');
-const handleAnime = (e) => {
+const handleAnime = (e) => {//handles the addition to the list
     e.preventDefault();
     helper.hideError();
     let name=e.target.querySelector('#animeName').value;
@@ -14,14 +14,13 @@ const handleAnime = (e) => {
     helper.sendPost(e.target.action, {name,genre,year,_csrf}, loadAnimesFromServer);
     return false;
 }
-const checkForDupes = async(newName) => {
+const checkForDupes = async(newName) => {//checks if an anime of that name is already on the list
     const response = await fetch('/getAnimes');
     const data = await response.json();
     let animeArray=data.animes;
-    console.log(animeArray);
     for (let list=0;list<animeArray.length;list++){
-        if(animeArray[list].name===newName){
-            helper.handleError();
+        if(animeArray[list][1]===newName){//if it's already on the list
+            helper.handleError('That anime is already on the list.');
             return false;
         }
     }
