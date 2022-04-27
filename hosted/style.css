@@ -135,12 +135,12 @@ nav:nth-child(1) {
     justify-content: center;
 }
 .anime {
-    width: 90%;
-    margin-top: 1px;
+    width: 75%;
+    margin: 5px;
     background-color: #ea2;
     border: 1px solid #e72;
-    padding: 5px;
-    min-height: 50px;
+    padding: 2px;
+    min-height: 30px;
     overflow: hidden;
     text-align: center;
 }

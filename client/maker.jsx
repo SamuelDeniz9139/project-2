@@ -10,8 +10,27 @@ const handleAnime = (e) => {
         helper.handleError('All fields are required.');
         return false;
     }
+    checkForDupes(name);
     helper.sendPost(e.target.action, {name,genre,year,_csrf}, loadAnimesFromServer);
     return false;
+}
+const checkForDupes=(newName)=>{
+    const response = await fetch('/getAnimes');
+    const data = await response.json();
+    let animeArray=data.animes;
+    for (let list=0;list<animeArray.length;list++){
+        if(animeArray[list].name===newName){
+            helper.handleError();
+            return false;
+        }
+    }
+}
+const loadAnimesFromServer=async()=>{
+    const response = await fetch('/getAnimes');
+    const data = await response.json();
+    ReactDOM.render(
+        <AnimeList animes={data.animes} />, document.getElementById('animes')
+    );
 }
 const premInit = (e) => {
     e.preventDefault();
@@ -55,7 +74,7 @@ const AnimeForm=(props)=>{
         <form id="animeForm" onSubmit={handleAnime}
         name="animeForm" action="/maker"
         method="POST" className="animeForm">
-            <input id="animeName" type="text" name="name" placeholder="Anime Title" /><br></br><br></br>
+            <input className='animeField' id="animeName" type="text" name="name" placeholder="Anime Title" /><br></br><br></br>
             <label htmlFor="animeGenre">Genre: </label>
             <select className='animeField' id="animeGenre" name="genre">
                 <option className='animeField' value="Action">Action</option>
@@ -75,7 +94,7 @@ const PremiumForm=(props)=>{
         <form id="animeForm" onSubmit={handleAnime}
         name="animeForm" action="/maker"
         method="POST" className="animeForm">
-            <input id="animeName" type="text" name="name" placeholder="Anime Title" /><br></br><br></br>
+            <input className='animeField' id="animeName" type="text" name="name" placeholder="Anime Title" /><br></br><br></br>
             <label htmlFor="animeGenre">Genre: </label>
             <select className='animeField' id="animeGenre" name="genre">
                 <option className='animeField' value="Action">Action</option>
@@ -92,13 +111,6 @@ const PremiumForm=(props)=>{
             <input id="_csrf" type="hidden" name="_csrf" value={props.csrf} />
             <input className="makeAnimeSubmit" type="submit" value="Add to list" />
         </form>
-    );
-}
-const loadAnimesFromServer=async()=>{
-    const response = await fetch('/getAnimes');
-    const data = await response.json();
-    ReactDOM.render(
-        <AnimeList animes={data.animes} />, document.getElementById('animes')
     );
 }
 const init = async (prem) => {
