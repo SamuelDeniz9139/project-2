@@ -29,7 +29,7 @@ const AnimeList = (props) => {
     const animeNodes=props.animes.map(anime => {
         return(
             <div key={anime._id} className="anime">
-                <h2 className="animeInfo">Title: {anime.name} </h2><br></br>
+                <p className="animeInfo">Title: {anime.name} </p><br></br>
                 <p>Genre: {anime.genre} </p><br></br>
                 <p>Year released: {anime.year} </p>
             </div>
