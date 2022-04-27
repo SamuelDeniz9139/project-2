@@ -2,37 +2,37 @@ const helper=require('./helper.js');
 const handleLogin=(e)=>{//handles when you want to log in normally
     e.preventDefault();
     helper.hideError();
-    const user=e.target.querySelector('#username').value;
+    const username=e.target.querySelector('#username').value;
     const pass=e.target.querySelector('#pass').value;
     const _csrf=e.target.querySelector('#_csrf').value;
-    if(!user||!pass){
+    if(!username||!pass){
         helper.handleError('All fields are required.');
         return false;
     }
-    helper.sendPost(e.target.action,{user,pass,_csrf});
+    helper.sendPost(e.target.action,{username,pass,_csrf});
     return false;
 }
 const handleChange=(e)=>{//handles when you change your password
     e.preventDefault();
     helper.hideError();
-    const user=e.target.querySelector('#username').value;
+    const username=e.target.querySelector('#username').value;
     const pass=e.target.querySelector('#pass').value;
     const _csrf=e.target.querySelector('#_csrf').value;
-    if(!user||!pass){
+    if(!username||!pass){
         helper.handleError('All fields are required.');
         return false;
     }
-    helper.sendPost(e.target.action,{user,pass,_csrf});
+    helper.sendPost(e.target.action,{username,pass,_csrf});
     return false;
 }
 const handleSignup=(e)=>{//handles when you want to sign up
     e.preventDefault();
     helper.hideError();
-    const user=e.target.querySelector('#username').value;
+    const username=e.target.querySelector('#username').value;
     const pass=e.target.querySelector('#pass').value;
     const pass2=e.target.querySelector('#pass2').value;
     const _csrf=e.target.querySelector('#_csrf').value;
-    if(!user||!pass||!pass2){
+    if(!username||!pass||!pass2){
         helper.handleError('All fields are required.');
         return false;
     }
@@ -40,7 +40,7 @@ const handleSignup=(e)=>{//handles when you want to sign up
         helper.handleError('Passwords must match.');
         return false;
     }
-    helper.sendPost(e.target.action,{user,pass,pass2,_csrf});
+    helper.sendPost(e.target.action,{username,pass,pass2,_csrf});
     return false;
 }
 const LoginWindow=(props)=>{
