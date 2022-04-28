@@ -65,22 +65,15 @@ const StatsPage = (props) => {//shows the average year and the most common genre
             </section>
         );
     }
-    const avgYear = props.animes.map(anime => {
-        let animeArray=props.animes;
-        let averageYear=0;
-        for (let list=0;list<animeArray.length;list++){
-            averageYear+=animeArray[list].year;
-        }
-        return(
-            <div key={anime._id} className="anime">
-                <h2>Your backlist's average year of release: {averageYear/animeArray.length}</h2>
-            </div>
-        );
-    });
+    let animeArray=props.animes;
+    let averageYear=0;
+    for (let list=0;list<animeArray.length;list++){
+        averageYear+=animeArray[list].year;
+    }
     return(
         <section>
             <div class="animeList">
-                {avgYear}
+                <h2>Your backlist's average year of release: {averageYear/animeArray.length}</h2>
             </div>
             <form id="backToList" onSubmit={premInit} name="backToList" action="/premium" method="POST">
                 <input id="_csrf" type="hidden" name="_csrf" value={props.csrf} />
