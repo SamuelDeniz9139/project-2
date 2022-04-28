@@ -32,6 +32,7 @@ const loadAnimesFromServer = async() => {//loads the animes from the server
 const premInit = (e) => {//reloads the main page with premium form
     e.preventDefault();
     helper.hideError();
+    document.getElementById('makeAnime').classList.remove("hidden");
     init(1);
 }
 const AnimeList = (props) => {
@@ -57,13 +58,42 @@ const AnimeList = (props) => {
         </div>
     );
 };
-const PremiumSwitch=(props)=>{
+const StatsPage = (props) => {
+    if(props.animes.length === 0){
+        return (
+            <section>
+                <div className="animeList">
+                    <h1 className="emptyAnime">Your backlog is empty.</h1>
+                </div>
+                <form id="backToList" onSubmit={premInit} name="backToList" action="/premium" method="POST">
+                    <input id="_csrf" type="hidden" name="_csrf" value={props.csrf} />
+                    <input className="formSubmit" type="submit" value="Return to Anime List" />
+                </form>
+            </section>
+        );
+    }
+    const stats = props.animes.map(anime => {
+        let animeArray=props.animes;
+        for (let list=0;list<animeArray.length;list++){//checks for an anime of that name
+            console.log(animeArray);
+        }
+        return(
+            <div key={anime._id} className="anime">
+                <p>Your backlist's most common genre: </p>
+                <p>Your backlist's average release year: </p>
+            </div>
+        );
+    });
     return(
-        <form id="premiumForm" onSubmit={premInit}
-        name="premiumForm" action="/premium" method="POST">
-            <input id="_csrf" type="hidden" name="_csrf" value={props.csrf} />
-            <input className="formSubmit" type="submit" value="Activate Premium" />
-        </form>
+        <section>
+            <div key={anime._id} className="anime">
+                {stats}
+            </div>
+            <form id="backToList" onSubmit={premInit} name="backToList" action="/premium" method="POST">
+                <input id="_csrf" type="hidden" name="_csrf" value={props.csrf} />
+                <input className="formSubmit" type="submit" value="Return to Anime List" />
+            </form>
+        </section>
     );
 }
 const AnimeForm=(props)=>{
@@ -110,10 +140,20 @@ const PremiumForm=(props)=>{
         </form>
     );
 }
+const PremiumSwitch=(props)=>{
+    return(
+        <form id="premiumForm" onSubmit={premInit}
+        name="premiumForm" action="/premium" method="POST">
+            <input id="_csrf" type="hidden" name="_csrf" value={props.csrf} />
+            <input className="formSubmit" type="submit" value="Activate Premium" />
+        </form>
+    );
+}
 const init = async (prem) => {//loads the preButton and data
     const response = await fetch('/getToken');
     const data = await response.json();
     const preButton=document.getElementById("premiumButton");
+    const viewButton=document.getElementById("viewButton");
     if(prem===0){
         ReactDOM.render(
             <AnimeForm csrf={data.csrfToken} />, document.getElementById('makeAnime')
@@ -123,7 +163,15 @@ const init = async (prem) => {//loads the preButton and data
             ReactDOM.render(<PremiumSwitch csrf={data.csrfToken} />, document.getElementById('animes'));
             return false;
         });
+        viewButton.classList.remove("hidden");
+        viewButton.addEventListener('click',(e)=>{
+            e.preventDefault();
+            document.getElementById('makeAnime').classList.add("hidden");
+            ReactDOM.render(<StatsPage animes={[]} />, document.getElementById('animes'));
+            return false;
+        });
     } else {
+        viewButton.classList.add("hidden");
         ReactDOM.render(
             <PremiumForm csrf={data.csrfToken} />, document.getElementById('makeAnime')
         );

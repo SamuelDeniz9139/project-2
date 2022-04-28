@@ -36,4 +36,5 @@ module.exports = {
   makerPage,
   makeAnime,
   getAnimes,
+  viewStats,
 };

@@ -45,8 +45,9 @@ const signup = async (req, res) => { // signs the user up
     return res.status(400).json({ error: 'An error occurred.' });
   }
 };
-const premiumMode = async (req, res) => // activates premium mode; not done yet
+const premiumMode = async (req, res) =>{ // activates premium mode
   res.json({ redirect: '/maker' });
+};
 const getToken = (req, res) => res.json({ csrfToken: req.csrfToken() });
 module.exports = {
   loginPage,
