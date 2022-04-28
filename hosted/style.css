@@ -6,15 +6,20 @@
     font-family: Coolvetica;
     color: white;
 }
-.animeField, .makeAnimeSubmit, #user, #pass, #pass2, #errorMessage, h1, .enterForm {
+.animeField, .makeAnimeSubmit, #user, #pass, #pass2, #errorMessage, h1, .enterForm, #avgYear {
     color:black;
 }
-h1{
-    font-size: 4em;
+h1, #avgYear{
     text-align: center;
     align-items: center;
     justify-content: center;
     margin-top: 20px;
+}
+#avgYear{
+    font-size: 2em;
+}
+h1{
+    font-size: 4em;
 }
 html, body {
     height: 100%;
@@ -34,7 +39,7 @@ nav {
 nav:nth-child(1) {
     padding-right: 25px;
 }
-.animeForm, .anime, .makeAnimeSubmit, .formSubmit{
+.animeForm, .anime, .makeAnimeSubmit, .formSubmit, .navlink a, .navlink a:link, .navlink a:visited, .navlink a:hover, .navlink a:active{
     background-color: #ea2;
     border: 2px solid #e72;
 }
@@ -48,8 +53,6 @@ nav:nth-child(1) {
 .navlink a, .navlink a:link, .navlink a:visited, .navlink a:hover, .navlink a:active {
     text-decoration: none;
     padding: 5px;
-    background-color: #ea2;
-    border: 1px solid #e72;
 }
 .animeForm {
     position: absolute;

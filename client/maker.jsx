@@ -73,7 +73,7 @@ const StatsPage = (props) => {//shows the average year and the most common genre
     return(
         <section>
             <div class="animeList">
-                <h2>Your backlist's average year of release: {averageYear/animeArray.length}</h2>
+                <h2 id="avgYear">Your backlist's average year of release: {averageYear/animeArray.length}</h2>
             </div>
             <form id="backToList" onSubmit={premInit} name="backToList" action="/premium" method="POST">
                 <input id="_csrf" type="hidden" name="_csrf" value={props.csrf} />
