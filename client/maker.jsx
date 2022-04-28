@@ -51,7 +51,7 @@ const AnimeList = (props) => {
         </div>
     );
 };
-const StatsPage = (props) => {
+const StatsPage = (props) => {//shows the average year and the most common genre of their backlist
     if(props.animes.length === 0){
         return (
             <section>
@@ -67,7 +67,7 @@ const StatsPage = (props) => {
     }
     const stats = props.animes.map(anime => {
         let animeArray=props.animes;
-        for (let list=0;list<animeArray.length;list++){//checks for an anime of that name
+        for (let list=0;list<animeArray.length;list++){
             console.log(animeArray);
         }
         return(
@@ -79,7 +79,7 @@ const StatsPage = (props) => {
     });
     return(
         <section>
-            <div key={anime._id} className="anime">
+            <div class="animeList">
                 {stats}
             </div>
             <form id="backToList" onSubmit={premInit} name="backToList" action="/premium" method="POST">
