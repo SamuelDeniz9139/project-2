@@ -36,7 +36,7 @@ nav:nth-child(1) {
 }
 .animeForm, .anime, .makeAnimeSubmit, .formSubmit{
     background-color: #ea2;
-    border: 1px solid #e72;
+    border: 2px solid #e72;
 }
 .navlink {
     padding: 5px;
