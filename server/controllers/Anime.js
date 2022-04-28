@@ -32,6 +32,9 @@ const makeAnime = async (req, res) => { // adds the anime to the list; not done
     return res.status(400).json({ error: 'An error occurred.' });
   }
 };
+const viewStats = async (req, res) => {
+  res.json({ redirect: '/maker' });
+};
 module.exports = {
   makerPage,
   makeAnime,
