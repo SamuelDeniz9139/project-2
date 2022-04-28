@@ -21,9 +21,9 @@ const makeAnime = async (req, res) => { // adds the anime to the list; not done
     owner: req.session.account._id,
   };
   try { // attempts to add the anime to the list
-    const newAnime = new Anime(animeData);
-    await newAnime.save();
-    return res.status(201).json({ name: newAnime.name, genre: newAnime.genre, year: newAnime.year });
+    const newAni = new Anime(animeData);
+    await newAni.save();
+    return res.status(201).json({ name: newAni.name, genre: newAni.genre, year: newAni.year });
   } catch (err) {
     console.log(err);
     if (err.code === 11000) { // should prevent duplicates; it currently doesn't
