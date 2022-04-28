@@ -22,13 +22,6 @@ const handleAnime = async(e) => {//handles the addition to the list
     helper.sendPost(e.target.action, {name,genre,year,_csrf}, loadAnimesFromServer);
     return false;
 }
-const loadAnimesFromServer = async() => {//loads the animes from the server
-    const response = await fetch('/getAnimes');
-    const data = await response.json();
-    ReactDOM.render(
-        <AnimeList animes={data.animes} />, document.getElementById('animes')
-    );
-}
 const premInit = (e) => {//reloads the main page with premium form
     e.preventDefault();
     helper.hideError();
@@ -149,6 +142,13 @@ const PremiumSwitch=(props)=>{
         </form>
     );
 }
+const loadAnimesFromServer = async() => {//loads the animes from the server
+    const response = await fetch('/getAnimes');
+    const data = await response.json();
+    ReactDOM.render(
+        <AnimeList animes={data.animes} />, document.getElementById('animes')
+    );
+}
 const init = async (prem) => {//loads the preButton and data
     const response = await fetch('/getToken');
     const data = await response.json();
@@ -165,11 +165,13 @@ const init = async (prem) => {//loads the preButton and data
         });
         viewButton.classList.add("hidden");
     } else {
+        const aniRes=await fetch('/getAnimes');
+        const aniData = await aniRes.json();
         viewButton.classList.remove("hidden");
         viewButton.addEventListener('click',(e)=>{
             e.preventDefault();
             document.getElementById('makeAnime').classList.add("hidden");
-            ReactDOM.render(<StatsPage animes={[]} />, document.getElementById('animes'));
+            ReactDOM.render(<StatsPage animes={aniData.animes} />, document.getElementById('animes'));
             return false;
         });
         ReactDOM.render(
