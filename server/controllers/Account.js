@@ -22,32 +22,6 @@ const login = (req, res) => { // logs the user in
     return res.json({ redirect: '/maker' });
   });
 };
-const change = async(req, res) => { // should change the password of the user; not done yet
-  const username = `${req.body.username}`;
-  const oldpass = `${req.body.oldpass}`;
-  const newpass = `${req.body.newpass}`;
-  const noopass = `${req.body.noopass}`;
-  if (!username || !oldpass || !newpass || !noopass) { // if one of the fields is empty
-    return res.status(400).json({ error: 'Requires all fields.' });
-  }
-  return Account.authenticate(username, oldpass, newpass, noopass, (err, account) => {
-    if (err) { // if there's an error
-      return res.status(401).json({ error: 'Something went wrong.' });
-    } else if (!account) {
-      return res.status(400).json({ error: "That account doesn't exist." });
-    } else if (newpass !== noopass) { // if the passwords don't match
-      return res.status(400).json({ error: 'New passwords must match.' });
-    }
-    const acct=await Account.create({
-      username:username,
-      password:oldpass
-    });
-    acct.password=newpass;
-    await acct.save();
-    req.session.account = Account.toAPI(account);
-    return res.json({ redirect: '/maker' });
-  });
-};
 const signup = async (req, res) => { // signs the user up
   const username = `${req.body.username}`;
   const pass = `${req.body.pass}`;
@@ -78,7 +52,6 @@ module.exports = {
   loginPage,
   login,
   logout,
-  change,
   signup,
   premiumMode,
   getToken,
