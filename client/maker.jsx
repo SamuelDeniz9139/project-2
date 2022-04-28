@@ -163,6 +163,8 @@ const init = async (prem) => {//loads the preButton and data
             ReactDOM.render(<PremiumSwitch csrf={data.csrfToken} />, document.getElementById('animes'));
             return false;
         });
+        viewButton.classList.add("hidden");
+    } else {
         viewButton.classList.remove("hidden");
         viewButton.addEventListener('click',(e)=>{
             e.preventDefault();
@@ -170,8 +172,6 @@ const init = async (prem) => {//loads the preButton and data
             ReactDOM.render(<StatsPage animes={[]} />, document.getElementById('animes'));
             return false;
         });
-    } else {
-        viewButton.classList.add("hidden");
         ReactDOM.render(
             <PremiumForm csrf={data.csrfToken} />, document.getElementById('makeAnime')
         );
